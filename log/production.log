@@ -1,0 +1,40 @@
+I, [2016-05-01T17:33:51.221728 #77618]  INFO -- : Started GET "/" for ::1 at 2016-05-01 17:33:51 -0500
+I, [2016-05-01T17:33:51.228760 #77618]  INFO -- : Processing by PostsController#index as HTML
+D, [2016-05-01T17:33:51.245778 #77618] DEBUG -- :   [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts"  ORDER BY created_at DESC[0m
+I, [2016-05-01T17:33:51.247643 #77618]  INFO -- :   Rendered posts/index.html.erb within layouts/application (3.1ms)
+I, [2016-05-01T17:33:51.247809 #77618]  INFO -- : Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.4ms)
+F, [2016-05-01T17:33:51.248813 #77618] FATAL -- : 
+ActionView::Template::Error (SQLite3::SQLException: no such table: posts: SELECT "posts".* FROM "posts"  ORDER BY created_at DESC):
+    1: <% @posts.each do |post| %>
+    2:   <div class="post_wrapper">
+    3:     <h2 class="title"><%= link_to post.title, post %></h2>
+    4:     <p class="date"><%= post.created_at.strftime("%B, %d, %Y") %></p>
+  app/views/posts/index.html.erb:1:in `_app_views_posts_index_html_erb___1745486522193532878_70355901739180'
+
+
+I, [2016-05-01T17:33:51.322051 #77618]  INFO -- : Started GET "/favicon.ico" for ::1 at 2016-05-01 17:33:51 -0500
+F, [2016-05-01T17:33:51.322668 #77618] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/JonNorstrom/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/JonNorstrom/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/JonNorstrom/.rbenv/versions/2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
