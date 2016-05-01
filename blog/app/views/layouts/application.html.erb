@@ -10,9 +10,8 @@
 <body>
   <div id="sidebar">
     <div id="logo">
-      <%= link_to root_path do %>
-        <%= image_tag "whale.svg" %>
-      <% end %>
+      <!-- links the logo to root_path that is set up in routes -->
+      <%= link_to image_tag("whale.svg"), root_path %>
     </div>
 
     <ul>
@@ -37,11 +36,15 @@
       <p>All Posts</p>
 
       <div class="buttons">
-        <button class="button"><%= link_to "New Post", new_post_path %></button>
+        <button class="button"><%= link_to new_post_path  do %>
+          <%= "New Post" %>
+          <% end %>
+        </button>
         <button class="button">Log Out</button>
       </div>
     </div>
 
+    <!-- my flash messages -->
     <% flash.each do |name, msg| %>
       <%= content_tag(:div, msg, class: "alert") %>
     <% end %>

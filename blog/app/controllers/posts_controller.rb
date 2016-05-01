@@ -4,13 +4,18 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
     @post = Post.new(post_params)
-    @post.save
 
-    redirect_to @post
+    if @post.save
+      redirect_to @post
+    else
+      # render, don't redirect - so that you can see the text still.
+      render 'new' # new.html.erb
+    end
   end
 
   def show
@@ -18,6 +23,8 @@ class PostsController < ApplicationController
   end
 
   private
+  # rails 4 strong params - have to define which params you will allow
+  # security? don't really know
     def post_params
       params.require(:post).permit(:title, :body)
     end
