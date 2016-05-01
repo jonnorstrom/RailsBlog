@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
+  <title>Whale Blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?familyt=Raleway:400,700' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'whale.png' %>
 </head>
 <body>
   <div id="sidebar">
@@ -17,7 +18,7 @@
     <ul>
       <li class="category">Website</li>
       <li> <%= link_to "Blog", root_path %></li>
-      <li>About</li>
+      <li> <%= link_to "About", about_path %></li>
     </ul>
 
     <ul>
@@ -33,7 +34,13 @@
 
   <div id="main_content">
     <div id="header">
+      <% if current_page?(root_path) %>
       <p>All Posts</p>
+      <% elsif current_page?(about_path) %>
+      <p>About</p>
+      <% else %>
+      <%= link_to "Back to All Posts", root_path %>
+      <% end %>
 
       <div class="buttons">
         <button class="button"><%= link_to new_post_path  do %>
